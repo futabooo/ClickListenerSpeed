@@ -5,11 +5,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends ActionBarActivity implements View.OnTouchListener, View.OnClickListener {
 
     private long startTime;
     private long endTime;
+    public ArrayList<Long> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,8 @@ public class MainActivity extends ActionBarActivity implements View.OnTouchListe
 
         findViewById(R.id.button3).setOnTouchListener(this);
         findViewById(R.id.button3).setOnClickListener(myClickListener);
+
+        arrayList = new ArrayList<>();
     }
 
     @Override
@@ -44,6 +49,7 @@ public class MainActivity extends ActionBarActivity implements View.OnTouchListe
     private void printTime(long startTime){
         endTime = System.nanoTime();
         System.out.println(endTime - startTime);
+        arrayList.add(endTime - startTime);
     }
 
     private View.OnClickListener myClickListener = new View.OnClickListener() {
